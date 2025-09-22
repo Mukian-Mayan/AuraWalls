@@ -11,6 +11,5 @@ class DiscoverPage extends StatelessWidget {
       backgroundColor: Colors.green,
       bottomNavigationBar: BottomNavBar(selectedIndex: selectedIndex),
     );
-    ;
   }
 }
