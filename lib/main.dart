@@ -1,3 +1,4 @@
+import 'package:aura_walls/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,19 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.purple, // Purple background
-        body: const Center(
-          child: Text(
-            'Hello World',
-            style: TextStyle(
-              color: Colors.green,
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: HomePage()
     );
   }
 }
