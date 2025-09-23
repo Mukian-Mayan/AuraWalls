@@ -98,4 +98,8 @@ class BottomNavBar extends StatelessWidget {
       ),
     );
   }
+  
+  SettingsPage() {
+    
+  }
 }
