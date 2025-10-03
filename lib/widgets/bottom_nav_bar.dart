@@ -1,7 +1,7 @@
 import 'package:aura_walls/Themes/app_theme.dart';
 import 'package:aura_walls/pages/discover_page.dart';
 import 'package:aura_walls/pages/home_page.dart';
-import 'package:aura_walls/pages/settings_page.dart';
+import 'package:aura_walls/widgets/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
