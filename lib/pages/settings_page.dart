@@ -1,4 +1,13 @@
+import 'package:aura_walls/Themes/app_theme.dart';
+import 'package:aura_walls/pages/downloads_page.dart';
+import 'package:aura_walls/pages/notifications_pane.dart';
+import 'package:aura_walls/pages/rating_and_reviews_page.dart';
+import 'package:aura_walls/widgets/Container1.dart';
 import 'package:aura_walls/widgets/bottom_nav_bar.dart';
+import 'package:aura_walls/widgets/button1.dart';
+import 'package:aura_walls/widgets/edit_profile.dart';
+import 'package:aura_walls/widgets/favorites_page.dart';
+import 'package:aura_walls/widgets/layout1.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -6,130 +15,122 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int selectedIndex = 1;
+    int selectedIndex = 3;
     return Scaffold(
       bottomNavigationBar: BottomNavBar(selectedIndex: selectedIndex),
-      backgroundColor: const Color(0xFF1a1a2e),
+      backgroundColor: AppTheme.color2,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1a1a2e),
+        backgroundColor: AppTheme.color5,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Favorites',
+          'Settings',
           style: TextStyle(
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
         ),
-        centerTitle: false,
+        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: ScrollConfiguration(
-          behavior: const ScrollBehavior().copyWith(overscroll: false),
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 12.0,
-              mainAxisSpacing: 12.0,
-              childAspectRatio: 0.75,
-            ),
-            itemCount: 8, // You can change this to your actual item count
-            itemBuilder: (context, index) {
-              return _buildGridItem(context, index);
-            },
+
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Layout1(),
+
+              const SizedBox(height: 10),
+              Button1(
+                text: 'edit',
+                icon: Icons.edit,
+                fontSize: 17,
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EditProfile()),
+                ),
+              ),
+
+              const SizedBox(height: 10),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.35,
+                width: MediaQuery.of(context).size.width * 0.92,
+
+                decoration: BoxDecoration(
+                  color: AppTheme.color5,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                //color: AppTheme.color5,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container1(
+                        secondIcon: Icons.navigate_next_outlined,
+                        textIcon: Icons.light_mode,
+                        iconText: 'Mode',
+                        fontSize: 20,
+                        onTap: () => {},
+                      ),
+                      Container1(
+                        secondIcon: Icons.navigate_next_outlined,
+                        textIcon: Icons.favorite_border,
+                        iconText: 'Favorites',
+                        fontSize: 20,
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FavoritesPage(),
+                          ),
+                        ),
+                      ),
+                      Container1(
+                        secondIcon: Icons.navigate_next_outlined,
+                        textIcon: Icons.file_download,
+                        iconText: 'Downloads',
+                        fontSize: 20,
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DownloadsPage(),
+                          ),
+                        ),
+                      ),
+                      Container1(
+                        secondIcon: Icons.navigate_next_outlined,
+                        textIcon: Icons.star,
+                        iconText: 'Rating and reviews',
+                        fontSize: 20,
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RatingAndReviewsPage(),
+                          ),
+                        ),
+                      ),
+                      Container1(
+                        secondIcon: Icons.navigate_next_outlined,
+                        textIcon: Icons.notifications_active,
+                        iconText: 'Notifications',
+                        fontSize: 20,
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NotificationsPane(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildGridItem(BuildContext context, int index) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.0),
-        color: Colors.grey[800], // Placeholder color for your images
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          // This is where your image will go
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.0),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.grey[700]!,
-                  Colors.grey[900]!,
-                ],
-              ),
-            ),
-            child: const Center(
-              child: Icon(
-                Icons.image,
-                color: Colors.white54,
-                size: 40,
-              ),
-            ),
-          ),
-          // Gradient overlay for better button visibility
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.0),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.6),
-                ],
-              ),
-            ),
-          ),
-          // Apply button
-          Positioned(
-            bottom: 12,
-            left: 12,
-            right: 12,
-            child: ElevatedButton(
-              onPressed: () {
-                // Handle apply button tap
-                print('Apply button tapped for item $index');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF6c63ff),
-                foregroundColor: Colors.white,
-                elevation: 4,
-                shadowColor: Colors.black.withOpacity(0.3),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-              ),
-              child: const Text(
-                'Apply',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
