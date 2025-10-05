@@ -1,6 +1,5 @@
 import 'package:aura_walls/Themes/app_theme.dart';
 import 'package:aura_walls/widgets/bottom_nav_bar.dart';
-import 'package:aura_walls/widgets/layout1.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

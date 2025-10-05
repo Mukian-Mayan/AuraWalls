@@ -64,6 +64,8 @@ class BottomNavBar extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
           child: GNav(
+            //hoverColor: Colors.transparent,
+            rippleColor: Colors.transparent,
             selectedIndex: selectedIndex,
             backgroundColor: AppTheme.color2,
             textStyle: TextStyle(
