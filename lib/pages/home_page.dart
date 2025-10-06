@@ -1,5 +1,6 @@
 import 'package:aura_walls/Themes/app_theme.dart';
 import 'package:aura_walls/widgets/bottom_nav_bar.dart';
+//import 'package:aura_walls/widgets/bottom_nav_bar2.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
         child: Column(children: [ Text('Home Page')]),
       ),
       bottomNavigationBar: BottomNavBar(selectedIndex: selectedIndex),
+      //bottomNavigationBar: BottomNavBar2(),
     );
   }
 }

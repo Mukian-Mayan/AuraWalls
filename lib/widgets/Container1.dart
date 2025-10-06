@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Container1 extends StatelessWidget {
-  final IconData textIcon;
-  final IconData secondIcon;
+  final IconData? textIcon;
+  final IconData? secondIcon;
   final String iconText;
   final double fontSize;
   final void Function()? onTap;
 
   const Container1({
     super.key,
-    required this.secondIcon,
-    required this.textIcon,
+    this.secondIcon,
+    this.textIcon,
     required this.iconText,
     required this.fontSize, this.onTap,
   });
@@ -20,21 +20,21 @@ class Container1 extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.06,
+        height: 25,
         width: MediaQuery.of(context).size.width * 0.89,
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(2),
         decoration: BoxDecoration(
           //color: AppTheme.color5,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.min,
+          //mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20.0),
+                  padding: const EdgeInsets.only(left: 15, right: 15),
                   child: Icon(textIcon, color: Colors.white, size: fontSize),
                 ), // left icon
                 Text(
@@ -49,7 +49,7 @@ class Container1 extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 20, left: 20.0),
+              padding: const EdgeInsets.only(right: 15, left: 15),
               child: Icon(secondIcon, color: Colors.white, size: fontSize),
             ),
           ],

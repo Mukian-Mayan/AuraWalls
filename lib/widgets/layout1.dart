@@ -11,7 +11,7 @@ class Layout1 extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.of(context).size.height * 0.2,
+        height: MediaQuery.of(context).size.height * 0.25,
         child: Stack(
           children: [
             Container(

@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:aura_walls/widgets/bottom_nav_bar.dart';
+//import 'package:aura_walls/widgets/bottom_nav_bar2.dart';
 import 'package:flutter/material.dart';
 
 class FavoritesPage extends StatelessWidget {
@@ -11,6 +12,7 @@ class FavoritesPage extends StatelessWidget {
     int selectedIndex = 1;
     return Scaffold(
       bottomNavigationBar: BottomNavBar(selectedIndex: selectedIndex),
+      //bottomNavigationBar: BottomNavBar2(),
       backgroundColor: const Color(0xFF1a1a2e),
       appBar: AppBar(
         backgroundColor: const Color(0xFF1a1a2e),
