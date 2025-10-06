@@ -1,5 +1,6 @@
 import 'package:aura_walls/Themes/app_theme.dart';
 import 'package:aura_walls/widgets/bottom_nav_bar.dart';
+//import 'package:aura_walls/widgets/layout1.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +11,9 @@ class HomePage extends StatelessWidget {
     int selectedIndex = 0;
     return Scaffold(
       backgroundColor: AppTheme.color5,
-      body: SingleChildScrollView(child: Column(children: [Text('Home Page')])),
+      body: SingleChildScrollView(
+        child: Column(children: [ Text('Home Page')]),
+      ),
       bottomNavigationBar: BottomNavBar(selectedIndex: selectedIndex),
     );
   }

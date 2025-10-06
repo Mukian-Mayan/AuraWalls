@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:aura_walls/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
