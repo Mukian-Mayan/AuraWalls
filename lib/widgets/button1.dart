@@ -21,10 +21,10 @@ class Button1 extends StatelessWidget {
       child: Container(
 
         height: MediaQuery.of(context).size.height*0.038,
-        width: MediaQuery.of(context).size.width*0.25,
+        width:70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: AppTheme.color5,
+          color: AppTheme.color2,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -32,13 +32,13 @@ class Button1 extends StatelessWidget {
             Text(
               text,
               style: TextStyle(
-                color: AppTheme.color2,
+                color: AppTheme.color5,
                 fontFamily: 'LeagueSpartan-Black',
                 fontSize: fontSize,
                 fontWeight: FontWeight.w700,
               ),
             ),
-            Icon(icon, color: AppTheme.color2,size: fontSize,),
+            Icon(icon, color: AppTheme.color5,size: fontSize,),
           ],
         ),
       ),

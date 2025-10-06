@@ -1,4 +1,6 @@
 import 'package:aura_walls/Themes/app_theme.dart';
+import 'package:aura_walls/widgets/custom_app_bar.dart';
+import 'package:aura_walls/widgets/layout1.dart';
 import 'package:flutter/material.dart';
 
 class RatingAndReviewsPage extends StatelessWidget {
@@ -7,9 +9,36 @@ class RatingAndReviewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return   Scaffold(
-      backgroundColor: AppTheme.color5,
-      body: SingleChildScrollView(child: Column(children: [Text('Previews')])),
-      
+      backgroundColor: AppTheme.color2,
+
+      appBar: CustomAppBar(
+        color: AppTheme.color5,
+        //title: "Downloads",
+        leadingIcon: Icons.arrow_back_ios,
+        onLeadingPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Layout1(
+              child: Center(
+                child: Text(
+                  'Ratings And Previews',
+                  style: TextStyle(
+                    color: AppTheme.color2,
+                    fontFamily: 'LeagueSpartan-Bold',
+                    fontSize: 30,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

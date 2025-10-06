@@ -3,7 +3,7 @@ import 'package:aura_walls/pages/discover_page.dart';
 //import 'package:aura_walls/pages/favorites_page.dart';
 import 'package:aura_walls/pages/home_page.dart';
 import 'package:aura_walls/pages/settings_page.dart';
-import 'package:aura_walls/widgets/favorites_page.dart';
+import 'package:aura_walls/pages/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -67,6 +67,8 @@ class BottomNavBar extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
           child: GNav(
+            //hoverColor: Colors.transparent,
+            rippleColor: Colors.transparent,
             selectedIndex: selectedIndex,
             backgroundColor: AppTheme.color2,
             textStyle: TextStyle(
@@ -92,3 +94,4 @@ class BottomNavBar extends StatelessWidget {
     );
   }
 }
+

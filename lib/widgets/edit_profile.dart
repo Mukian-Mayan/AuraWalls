@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -8,17 +9,17 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfile> {
-  final _formKey = GlobalKey<FormState>();//i dont understand this
+  final _formKey = GlobalKey<FormState>();
   final _displayNameController = TextEditingController();
   final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
 
-  bool _isLoading = false;//also this
-  bool _isSaving = false;//also this
+  bool _isLoading = false;
+  bool _isSaving = false;
   String? _profileImageUrl;
 
   @override
-  void dispose() { //this
+  void dispose() {
     _displayNameController.dispose();
     _phoneController.dispose();
     _emailController.dispose();
@@ -31,22 +32,26 @@ class _EditProfileScreenState extends State<EditProfile> {
     setState(() => _isSaving = true);
 
     try {
-      
       await Future.delayed(const Duration(seconds: 1));
 
-      if (mounted) {//also this
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('userName', _displayNameController.text);
+      await prefs.setString('profilePicUrl', _profileImageUrl ?? '');
+
+      if (mounted) {
         setState(() => _isSaving = false);
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Profile updated successfully!')),
         );
         Navigator.pop(context, true);
       }
-    } catch (e) {//this
+    } catch (e) {
+      //this
       if (mounted) {
         setState(() => _isSaving = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
       }
     }
   }
@@ -79,7 +84,7 @@ class _EditProfileScreenState extends State<EditProfile> {
           : SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Form(
-                key: _formKey,//what does this do
+                key: _formKey,
                 child: Column(
                   children: [
                     // Profile Picture (placeholder)
@@ -95,14 +100,13 @@ class _EditProfileScreenState extends State<EditProfile> {
                     const SizedBox(height: 10),
                     TextButton(
                       onPressed: () {
-                        // Add image picker here if needed
+                        // moen, i should add image picker here if needed
                       },
                       child: const Text('Change Profile Picture'),
                     ),
 
                     const SizedBox(height: 30),
 
-                    // Name
                     TextFormField(
                       controller: _displayNameController,
                       decoration: const InputDecoration(
@@ -110,13 +114,13 @@ class _EditProfileScreenState extends State<EditProfile> {
                         prefixIcon: Icon(Icons.person),
                         border: OutlineInputBorder(),
                       ),
-                      validator: (value) =>
-                          value == null || value.isEmpty ? 'Enter your name' : null,
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'Enter your name'
+                          : null,
                     ),
 
                     const SizedBox(height: 20),
 
-                    // Email
                     TextFormField(
                       controller: _emailController,
                       decoration: const InputDecoration(
@@ -129,7 +133,6 @@ class _EditProfileScreenState extends State<EditProfile> {
 
                     const SizedBox(height: 20),
 
-                    // Phone
                     TextFormField(
                       controller: _phoneController,
                       decoration: const InputDecoration(
@@ -148,7 +151,9 @@ class _EditProfileScreenState extends State<EditProfile> {
                       child: ElevatedButton(
                         onPressed: _isSaving ? null : _saveProfile,
                         child: _isSaving
-                            ? const CircularProgressIndicator(color: Colors.white)
+                            ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
                             : const Text('Save Changes'),
                       ),
                     ),

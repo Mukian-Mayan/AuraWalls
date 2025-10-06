@@ -3,28 +3,30 @@ import 'package:aura_walls/widgets/custom_app_bar.dart';
 import 'package:aura_walls/widgets/layout1.dart';
 import 'package:flutter/material.dart';
 
-class DownloadsPage extends StatelessWidget {
-  const DownloadsPage({super.key});
+class AboutUsPage extends StatelessWidget {
+  const AboutUsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.color2,
+
       appBar: CustomAppBar(
         color: AppTheme.color5,
-        //title: "Downloads",
+        //title: "About US",
         leadingIcon: Icons.arrow_back_ios,
         onLeadingPressed: () {
           Navigator.pop(context);
         },
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
             Layout1(
               child: Center(
                 child: Text(
-                  'DownLoads',
+                  'About Us',
                   style: TextStyle(
                     color: AppTheme.color2,
                     fontFamily: 'LeagueSpartan-Bold',
