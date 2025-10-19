@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:aura_walls/pages/home_page.dart';
 import 'package:aura_walls/widgets/bottom_nav_bar.dart';
 //import 'package:aura_walls/widgets/bottom_nav_bar2.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,17 @@ class FavoritesPage extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            } else {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+                (Route<dynamic> route) => false,
+              );
+            }
+          },
         ),
         title: const Text(
           'Favorites',
