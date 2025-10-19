@@ -4,7 +4,7 @@ import '../models/wallpaper.dart';
 
 class WallpaperService {
   static const String _baseUrl = 'https://api.unsplash.com';
-  static const String _accessKey = 'YOUR_UNSPLASH_ACCESS_KEY'; // Replace with actual key
+  static const String _accessKey = 'eNlVFhpvV42HeAvDMPcATTIG7RuQ4uT_IKHr5ReRHP0'; // Replace with actual key
 
   // For now, use sample data from assets
   static List<Wallpaper> getSampleWallpapers() {

@@ -5,6 +5,10 @@ import 'package:aura_walls/services/wallpaper_service.dart';
 import 'package:aura_walls/widgets/bottom_nav_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:wallpaper_manager_flutter/wallpaper_manager_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,11 +28,67 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _loadWallpapers() async {
-    // For now, use sample data
-    wallpapers = WallpaperService.getSampleWallpapers();
+    try {
+      wallpapers = await WallpaperService.fetchWallpapers();
+    } catch (e) {
+      // Fallback to sample data if API fails
+      wallpapers = WallpaperService.getSampleWallpapers();
+    }
     setState(() {
       isLoading = false;
     });
+  }
+
+  Future<void> _applyWallpaper(Wallpaper wallpaper) async {
+    try {
+      // Show loading dialog
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const AlertDialog(
+          content: Row(
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(width: 16),
+              Text('Setting wallpaper...'),
+            ],
+          ),
+        ),
+      );
+
+      // Download the image
+      final response = await http.get(Uri.parse(wallpaper.url));
+      if (response.statusCode != 200) {
+        throw Exception('Failed to download image');
+      }
+
+      // Get temporary directory
+      final tempDir = await getTemporaryDirectory();
+      final file = File('${tempDir.path}/${wallpaper.id}.jpg');
+      await file.writeAsBytes(response.bodyBytes);
+
+      // Set wallpaper
+      final result = await WallpaperManagerFlutter().setwallpaperfromFile(
+        file,
+        WallpaperManagerFlutter.HOME_SCREEN,
+      );
+
+      // Close loading dialog
+      Navigator.of(context).pop();
+
+      // Show success message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Wallpaper set successfully!')),
+      );
+    } catch (e) {
+      // Close loading dialog if open
+      Navigator.of(context).pop();
+
+      // Show error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to set wallpaper: $e')),
+      );
+    }
   }
 
   @override
@@ -189,10 +249,7 @@ class _HomePageState extends State<HomePage> {
                 left: 12,
                 right: 12,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Handle apply button tap
-                    print('Apply button tapped for wallpaper ${wallpaper.id}');
-                  },
+                  onPressed: () => _applyWallpaper(wallpaper),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF6c63ff),
                     foregroundColor: Colors.white,
