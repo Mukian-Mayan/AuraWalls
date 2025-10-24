@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:aura_walls/Themes/app_theme.dart';
 import 'package:aura_walls/pages/about_us_page.dart';
 import 'package:aura_walls/pages/downloads_page.dart';
@@ -54,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage> {
         _isLoading = false; // stop spinner
       });
     } catch (e) {
-      print("Error loading profile: $e");
+      //print("Error loading profile: $e");
       await Future.delayed(const Duration(seconds: 2));
       setState(() {
         name = 'No name set';

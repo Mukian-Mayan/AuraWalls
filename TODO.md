@@ -1,0 +1,3 @@
+- [x] Update home_page.dart to use fetchWallpapers instead of sample data
+- [x] Implement the "Apply" button to download and set wallpapers
+- [x] Add internet and storage permissions to AndroidManifest.xml

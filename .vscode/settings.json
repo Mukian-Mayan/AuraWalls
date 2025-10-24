@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
   "C_Cpp_Runner.debuggerPath": "gdb",
@@ -56,4 +57,7 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false
+=======
+    "dart.flutterSdkPath": "C:\\flutter_windows_3.35.5-stable\\flutter"
+>>>>>>> d209ed8e39c36b8c7c9dacfd88d3b1bcb697aaa2
 }

@@ -10,7 +10,6 @@ class DownloadsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.color2,
-
       appBar: CustomAppBar(
         color: AppTheme.color5,
         //title: "Downloads",
@@ -19,7 +18,6 @@ class DownloadsPage extends StatelessWidget {
           Navigator.pop(context);
         },
       ),
-
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -1,5 +1,6 @@
 import 'package:aura_walls/Themes/app_theme.dart';
 import 'package:aura_walls/pages/discover_page.dart';
+//import 'package:aura_walls/pages/favorites_page.dart';
 import 'package:aura_walls/pages/home_page.dart';
 import 'package:aura_walls/pages/settings_page.dart';
 import 'package:aura_walls/pages/favorites_page.dart';
@@ -21,7 +22,9 @@ class BottomNavBar extends StatelessWidget {
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => FavoritesPage()),
+          MaterialPageRoute(
+            builder: (context) => FavoritesPage(),
+          ),
         );
         break;
       case 2:
