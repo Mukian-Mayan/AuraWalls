@@ -36,9 +36,9 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin sqflite_android, com.tekartik.sqflite.SqflitePlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new com.example.wallpaper_manager_flutter.WallpaperManagerFlutterPlugin());
+      flutterEngine.getPlugins().add(new com.praveen.wallpaper_manager_flutter.WallpaperManagerFlutterPlugin());
     } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin wallpaper_manager_flutter, com.example.wallpaper_manager_flutter.WallpaperManagerFlutterPlugin", e);
+      Log.e(TAG, "Error registering plugin wallpaper_manager_flutter, com.praveen.wallpaper_manager_flutter.WallpaperManagerFlutterPlugin", e);
     }
   }
 }

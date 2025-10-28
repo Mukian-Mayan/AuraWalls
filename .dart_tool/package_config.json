@@ -459,9 +459,9 @@
     },
     {
       "name": "wallpaper_manager_flutter",
-      "rootUri": "file:///C:/Users/Joel/AppData/Local/Pub/Cache/hosted/pub.dev/wallpaper_manager_flutter-0.0.2",
+      "rootUri": "file:///C:/Users/Joel/AppData/Local/Pub/Cache/hosted/pub.dev/wallpaper_manager_flutter-1.0.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.7"
     },
     {
       "name": "web",

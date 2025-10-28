@@ -70,10 +70,15 @@ class _HomePageState extends State<HomePage> {
       await file.writeAsBytes(response.bodyBytes);
 
       // Set wallpaper
-      final result = await WallpaperManagerFlutter().setwallpaperfromFile(
+      /*final result = await WallpaperManagerFlutter().setwallpaperfromFile(
         file,
         WallpaperManagerFlutter.HOME_SCREEN,
-      );
+      ); */
+      /*final result = await WallpaperManagerFlutter.setWallpaperFromFile(
+        file,
+        WallpaperLocation.homeScreen,
+      );*/
+
 
       // Close loading dialog
       Navigator.of(context).pop();

@@ -66,9 +66,10 @@
     },
     {
       "name": "wallpaper_manager_flutter",
-      "version": "0.0.2",
+      "version": "1.0.1",
       "dependencies": [
-        "flutter"
+        "flutter",
+        "plugin_platform_interface"
       ]
     },
     {
@@ -284,6 +285,13 @@
         "stream_channel",
         "string_scanner",
         "term_glyph"
+      ]
+    },
+    {
+      "name": "plugin_platform_interface",
+      "version": "2.1.8",
+      "dependencies": [
+        "meta"
       ]
     },
     {
@@ -569,13 +577,6 @@
         "flutter",
         "platform",
         "plugin_platform_interface"
-      ]
-    },
-    {
-      "name": "plugin_platform_interface",
-      "version": "2.1.8",
-      "dependencies": [
-        "meta"
       ]
     },
     {
